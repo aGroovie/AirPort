@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link href="../static/css/style.css" th:href="@{css/style.css}" rel="stylesheet" type="text/css">
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket information</title>
+</head>
+<body class="form-body">
+<b>Please, enter first and last Name</b>
+<form class="form-input" action="filterByNames" method="post">
+    <label>
+        <a>First name</a>
+        <input type="text" name="firstName">
+        <a>Last name</a>
+        <input type="text" name="lastName">
+    <p>
+        <button>Search </button>
+    </p>
+    </label>
+</form>
+        <table class="average-table">
+            <caption><b>Orders</b></caption>
+            <thead>
+            <tr>
+                <th>Ticket Number</th>
+                <th>Passenger First Name</th>
+                <th>Passenger Last Name</th>
+                <th>Ticket Gate</th>
+                <th>Country origin</th>
+                <th>City origin</th>
+                <th>Destination Country</th>
+                <th>Destination City</th>
+                <th>Time Out</th>
+                <th>Air Company Name</th>
+                <th>Seat Number</th>
+                <th>Seat raw</th>
+                <th>Seat class</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ticket : ${tickets}">
+                <td th:text="${ticket.ticketId}"></td>
+                <td th:text="${ticket.passenger.firstName}"></td>
+                <td th:text="${ticket.passenger.lastName}"></td>
+                <td th:text="${ticket.passenger.lastName}"></td>
+                <td th:text="${ticket.trip.airPortFrom.country}"></td>
+                <td th:text="${ticket.trip.airPortFrom.city}"></td>
+                <td th:text="${ticket.trip.airPortTo.country}"></td>
+                <td th:text="${ticket.trip.airPortTo.city}"></td>
+                <td th:text="${ticket.trip.timeOut}"></td>
+                <td th:text="${ticket.company.name}"></td>
+                <td th:text="${ticket.seat.seatId}"></td>
+                <td th:text="${ticket.seat.raw}"></td>
+                <td th:text="${ticket.seat.seatClass}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+</form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body class="form-body">
+<table class="average-table">
+    <caption> <b> List of Users</b></caption>
+    <thead>
+    <tr>
+        <th>User id</th>
+        <th>User First name</th>=
+        <th>User Second name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="passenger: ${passengers}">
+        <td th:text="${passenger.passengerId}"></td>
+        <td th:text="${passenger.firstName}"></td>
+        <td th:text="${passenger.lastName}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

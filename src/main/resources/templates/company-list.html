@@ -1,0 +1,35 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link href="../static/css/style.css" th:href="@{css/style.css}" rel="stylesheet" type="text/css">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Companies</title>
+</head>
+<body class="form-body">
+<form action="filterByCountry" method="post">
+    <label>
+        <a>Destination Country</a>
+        <input type="text" name="countryName">
+        <button>Search</button>
+        </p>
+    </label>
+</form>
+<table class="average-table">
+    <caption><b> List of Companies</b></caption>
+    <thead>
+    <tr>
+        <th>Company ID</th>
+        <th>Company name </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="company: ${companiesFiltered}">
+        <td th:text="${company.companyId}"> </td>
+        <td th:text="${company.name}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

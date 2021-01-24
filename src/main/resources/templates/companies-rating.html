@@ -1,0 +1,25 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Rating</title>
+</head>
+<body>
+<table>
+    <caption> <b> List of Companies</b></caption>
+    <thead>
+    <tr>
+        <th>Company name</th>
+        <th>Tickets sold</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="company: ${companies}">
+        <td th:text="${company.name}"></td>
+        <td th:text="${company.ticketsSold}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
