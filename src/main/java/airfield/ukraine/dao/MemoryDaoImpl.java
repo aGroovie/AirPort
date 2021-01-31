@@ -21,10 +21,6 @@ public class MemoryDaoImpl implements MemoryDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public int savePassenger(Passenger passenger) {
-        return jdbcTemplate.update("INSERT INTO airport.passenger VALUES (?,?,?)", passenger.getPassengerId(), passenger.getFirstName(), passenger.getLastName());
-    }
-
 
     public Collection<Passenger> getPassengers() {
 

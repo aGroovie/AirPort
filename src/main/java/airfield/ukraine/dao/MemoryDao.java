@@ -10,8 +10,6 @@ import java.util.Collection;
 import java.util.List;
 
 public interface MemoryDao {
-    int savePassenger(Passenger passenger);
-
     Collection<Passenger> getPassengers();
 
     List<Ticket> findTicketInfoByName(String firstName, String lastName);

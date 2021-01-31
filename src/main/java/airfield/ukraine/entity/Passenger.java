@@ -1,5 +1,6 @@
 package airfield.ukraine.entity;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;

@@ -33,16 +33,6 @@ public class MainController {
     }
 
 
-    @PostMapping(value = "/savePassenger")
-    public String savePassenger(@ModelAttribute("passenger") Passenger passenger) {
-
-        memoryDaoImpl.savePassenger(passenger);
-
-        return "redirect:/passenger-list";
-
-    }
-
-
     @GetMapping(value = "passenger-list")
     public String showPassengers(Model model) {
         Collection<Passenger> passengers = memoryDaoImpl.getPassengers();
