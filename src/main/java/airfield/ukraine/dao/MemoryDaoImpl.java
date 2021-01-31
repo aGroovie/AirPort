@@ -127,12 +127,29 @@ public class MemoryDaoImpl implements MemoryDao {
                 "ON\n" +
                 "trip_to = airport_id\n" +
                 "WHERE airport_country = '" + countryName + "'";
-        
+
         return jdbcTemplate.query(SELECT_BY_COUNTRY, (resultSet, i) -> {
             Company company = new Company();
             company.setCompanyId(resultSet.getLong(1));
             company.setName(resultSet.getString(2));
             return company;
+        });
+    }
+
+    @Override
+    public List<Quantity> getQuantityOfTrips(String dateFrom, String dateTo, String countryName) {
+        String SELECT_COUNT = "SELECT count(trip_id)\n" +
+                "FROM trip\n" +
+                "INNER JOIN airport \n" +
+                "ON trip_from = airport_id\n" +
+                "WHERE ( trip_time_out BETWEEN " + "'" + dateFrom + "'" + "AND" + "'" + dateTo + "')" +
+                "AND  airport_country = " + "'" + countryName + "'";
+
+        return jdbcTemplate.query(SELECT_COUNT, (resultSet, i) -> {
+            Quantity quantity = new Quantity();
+            quantity.setQuantity(resultSet.getInt(1));
+
+            return quantity;
         });
     }
 

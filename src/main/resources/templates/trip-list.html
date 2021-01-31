@@ -2,33 +2,33 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <link href="../static/css/style.css" th:href="@{css/style.css}" rel="stylesheet" type="text/css">
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Companies</title>
 </head>
 <body class="form-body">
-<form action="filterByCountry" method="post">
+<form action="filterByDate" method="post">
     <label>
-        <a>Destination Country</a>
+        <a>Date from</a>
+        <input type="text" name="dateFrom">
+        <a>Date To</a>
+        <input type="text" name="dateTo">
+        <a>Country From</a>
         <input type="text" name="countryName">
         <button>Search</button>
         </p>
     </label>
 </form>
 <table class="average-table">
-    <caption><b> List of Companies</b></caption>
+    <caption> <b> Trips from This Country :</b></caption>
     <thead>
     <tr>
-        <th>Company ID</th>
-        <th>Company name </th>
+        <th>Quantity</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="company: ${companiesFiltered}">
-        <td th:text="${company.companyId}"> </td>
-        <td th:text="${company.name}"></td>
-    </tr>
+    <tr th:each="quantity: ${tripQuantity}">
+        <td th:text="${quantity.quantity}"></td>
     </tbody>
 </table>
 </body>

@@ -3,6 +3,7 @@ package airfield.ukraine.controller;
 import airfield.ukraine.dao.MemoryDaoImpl;
 import airfield.ukraine.entity.Company;
 import airfield.ukraine.entity.Passenger;
+import airfield.ukraine.entity.Quantity;
 import airfield.ukraine.entity.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import java.util.List;
 //main menu
 //Model View Controller
 @Controller
-@SessionAttributes({"tickets","companiesFiltered"})
+@SessionAttributes({"tickets", "companiesFiltered","tripQuantity"})
 public class MainController {
 
 
@@ -80,12 +81,24 @@ public class MainController {
     }
 
     @PostMapping(value = "filterByCountry")
-    public String filterByCountry(Model model, @RequestParam(value = "countryName",required = false) String country) {
+    public String filterByCountry(Model model, @RequestParam(value = "countryName", required = false) String country) {
         List<Company> companiesFiltered = memoryDaoImpl.getCompaniesByCountryName(country);
         model.addAttribute("companiesFiltered", companiesFiltered);
 
         return "redirect:company-list";
     }
 
+    @GetMapping(value = "trip-list")
+    public String tripList(Model model) {
+        model.getAttribute("tripQuantity");
+        return "trip-list";
+    }
 
+    @PostMapping(value = "filterByDate")
+    public String filterByDate(Model model, @RequestParam(value = "dateFrom") String dateFrom,
+                               @RequestParam(value = "dateTo") String dateTo, @RequestParam(value = "countryName") String countryName) {
+        List<Quantity> tripQuantity = memoryDaoImpl.getQuantityOfTrips(dateFrom, dateTo, countryName);
+        model.addAttribute("tripQuantity", tripQuantity);
+        return "redirect:/trip-list";
+    }
 }
