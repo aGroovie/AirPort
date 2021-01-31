@@ -98,10 +98,11 @@ public class MemoryDaoImpl implements MemoryDao {
 
     public List<Company> getCompaniesByRating() {
 
-        String SELECT_BY_RATING = "SELECT company_name, COUNT(ticket_id) AS sold_tickets FROM airport.ticket\n" +
+        String SELECT_BY_RATING = "SELECT company_name,COUNT(ticket_id) AS sold_tickets FROM airport.ticket\n" +
                 "INNER JOIN company\n" +
                 "ON ticket_company = company_id\n" +
-                "GROUP BY company_id";
+                "GROUP BY company_id\n" +
+                "ORDER BY  sold_tickets DESC;" ;
 
 
         return jdbcTemplate.query(SELECT_BY_RATING, (resultSet, i) -> {

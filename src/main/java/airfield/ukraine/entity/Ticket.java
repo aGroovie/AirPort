@@ -17,7 +17,6 @@ public class Ticket {
 
     private Seat seat;
 
-
     private int gate;
 
     public Long getTicketId() {
